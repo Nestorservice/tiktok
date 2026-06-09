@@ -53,10 +53,12 @@ Clone de TikTok de haute qualité produit avec React Native CLI et un backend Fi
    npm install --legacy-peer-deps
    ```
 
-3. **Configuration Firebase :**
+4. **Configuration Firebase :**
    - Créez un projet sur la [Console Firebase](https://console.firebase.google.com/).
    - Activez **Authentication** (Email/Mot de passe), **Firestore**, **Storage**, et **Cloud Messaging**.
+   - **Important :** Utilisez le nom de package `com.captcut` lors de la création de l'application Android dans Firebase.
    - Téléchargez `google-services.json` (Android) et placez-le dans `android/app/`.
+
    - Téléchargez `GoogleService-Info.plist` (iOS) et placez-le dans `ios/tiktok/`.
 
 4. **Installer les Pods (iOS uniquement) :**

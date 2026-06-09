@@ -1,4 +1,4 @@
-package com.tiktok
+package com.captcut
 
 import android.app.Application
 import com.facebook.react.PackageList

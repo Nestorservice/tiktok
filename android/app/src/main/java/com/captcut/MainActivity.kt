@@ -1,4 +1,4 @@
-package com.tiktok
+package com.captcut
 
 import com.facebook.react.ReactActivity
 import com.facebook.react.ReactActivityDelegate
