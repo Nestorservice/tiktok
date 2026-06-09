@@ -1,97 +1,104 @@
-This is a new [**React Native**](https://reactnative.dev) project, bootstrapped using [`@react-native-community/cli`](https://github.com/react-native-community/cli).
+# TikTok Clone — React Native CLI
 
-# Getting Started
+Clone de TikTok de haute qualité produit avec React Native CLI et un backend Firebase complet.
 
-> **Note**: Make sure you have completed the [Set Up Your Environment](https://reactnative.dev/docs/set-up-your-environment) guide before proceeding.
+## 🚀 Fonctionnalités
 
-## Step 1: Start Metro
+- **Authentification Complète :** Inscription, connexion et déconnexion avec Firebase Auth.
+- **Flux Vidéo (Feed) :** Défilement fluide en plein écran avec lecture automatique (autoplay), pause/lecture au toucher.
+- **Interactions Sociales :**
+  - Système de "Like" (J'aime) avec animation Lottie (double-tap).
+  - Commentaires en temps réel avec Bottom Sheet.
+  - Système d'abonnement (Follow/Unfollow) entre utilisateurs.
+- **Découverte :** Recherche de vidéos et hashtags tendances.
+- **Profils Utilisateurs :**
+  - Profil personnel avec édition (bio, nom d'affichage).
+  - Consultation des profils d'autres utilisateurs depuis le flux ou les commentaires.
+  - Grille de vidéos publiées.
+- **Création de Contenu :**
+  - Caméra intégrée (Vision Camera) avec gestion du flash et switch caméra.
+  - Enregistrement vidéo et écran de pré-publication (hashtags, description).
+  - Upload avec compression vidéo et barre de progression.
+- **Boîte de Réception :** Notifications d'activité (Likes, Commentaires, Abonnés).
 
-First, you will need to run **Metro**, the JavaScript build tool for React Native.
+## 🛠 Tech Stack
 
-To start the Metro dev server, run the following command from the root of your React Native project:
+- **Framework :** React Native CLI (Architecture 0.85+)
+- **Langage :** TypeScript
+- **Backend :** Firebase (Auth, Firestore, Storage, Cloud Messaging)
+- **Gestion d'état :** Redux Toolkit (Slices pour auth, feed, player, ui)
+- **Navigation :** React Navigation 6 (Bottom Tabs + Stack)
+- **Vidéo :** react-native-video & react-native-vision-camera
+- **Animations :** React Native Reanimated 3 & Lottie
+- **UI :** FastImage (optimisation images), Bottom Sheet (Gorhom), Linear Gradient, Vector Icons (Ionicons).
 
-```sh
-# Using npm
-npm start
+## 📦 Installation
 
-# OR using Yarn
-yarn start
-```
+### Prérequis
+- Node.js >= 22.11.0
+- Android Studio & SDK (pour Android)
+- Xcode & CocoaPods (pour iOS)
+- Un compte Firebase
 
-## Step 2: Build and run your app
+### Étapes
 
-With Metro running, open a new terminal window/pane from the root of your React Native project, and use one of the following commands to build and run your Android or iOS app:
+1. **Cloner le projet :**
+   ```bash
+   git clone <votre-lien-depot>
+   cd tiktok
+   ```
 
-### Android
+2. **Installer les dépendances :**
+   ```bash
+   npm install
+   ```
 
-```sh
-# Using npm
-npm run android
+3. **Configuration Firebase :**
+   - Créez un projet sur la [Console Firebase](https://console.firebase.google.com/).
+   - Activez **Authentication** (Email/Mot de passe), **Firestore**, **Storage**, et **Cloud Messaging**.
+   - Téléchargez `google-services.json` (Android) et placez-le dans `android/app/`.
+   - Téléchargez `GoogleService-Info.plist` (iOS) et placez-le dans `ios/tiktok/`.
 
-# OR using Yarn
-yarn android
-```
+4. **Installer les Pods (iOS uniquement) :**
+   ```bash
+   cd ios && pod install && cd ..
+   ```
 
-### iOS
+5. **Lancer l'application :**
+   ```bash
+   # Android
+   npm run android
 
-For iOS, remember to install CocoaPods dependencies (this only needs to be run on first clone or after updating native deps).
+   # iOS
+   npm run ios
+   ```
 
-The first time you create a new project, run the Ruby bundler to install CocoaPods itself:
+## 🧪 Tests
 
-```sh
-bundle install
-```
+Pour tester les fonctionnalités principales :
+- **Flux :** Swiper verticalement pour changer de vidéo.
+- **Like :** Double-taper sur la vidéo ou cliquer sur le cœur.
+- **Commentaires :** Cliquer sur l'icône de commentaire, en ajouter un, et cliquer sur le profil du commentateur.
+- **Profil :** Cliquer sur l'avatar dans le flux pour voir le profil de l'auteur.
+- **Upload :** Cliquer sur le bouton "+" central, enregistrer une vidéo, ajouter une description et publier.
 
-Then, and every time you update your native dependencies, run:
+## 🌱 Données de Démo (Seed)
 
-```sh
-bundle exec pod install
-```
+Pour remplir votre base de données avec 5 utilisateurs et 20 vidéos de test :
+1. Récupérez votre clé privée de compte de service Firebase (JSON).
+2. Nommez-la `firebase-service-account.json` à la racine.
+3. Lancez le script :
+   ```bash
+   npx ts-node scripts/seedFirestore.ts
+   ```
 
-For more information, please visit [CocoaPods Getting Started guide](https://guides.cocoapods.org/using/getting-started.html).
+## 📈 Améliorations Futures (Roadmap Pro)
 
-```sh
-# Using npm
-npm run ios
+- [ ] **Messagerie Directe :** Chat en temps réel entre utilisateurs.
+- [ ] **Édition Vidéo :** Ajout de filtres, musique de fond et découpage.
+- [ ] **Pagination Infinie :** Optimisation avancée du cache pour le flux.
+- [ ] **Live Streaming :** Support des diffusions en direct.
+- [ ] **Partage Externe :** Intégration profonde avec les réseaux sociaux.
 
-# OR using Yarn
-yarn ios
-```
-
-If everything is set up correctly, you should see your new app running in the Android Emulator, iOS Simulator, or your connected device.
-
-This is one way to run your app — you can also build it directly from Android Studio or Xcode.
-
-## Step 3: Modify your app
-
-Now that you have successfully run the app, let's make changes!
-
-Open `App.tsx` in your text editor of choice and make some changes. When you save, your app will automatically update and reflect these changes — this is powered by [Fast Refresh](https://reactnative.dev/docs/fast-refresh).
-
-When you want to forcefully reload, for example to reset the state of your app, you can perform a full reload:
-
-- **Android**: Press the <kbd>R</kbd> key twice or select **"Reload"** from the **Dev Menu**, accessed via <kbd>Ctrl</kbd> + <kbd>M</kbd> (Windows/Linux) or <kbd>Cmd ⌘</kbd> + <kbd>M</kbd> (macOS).
-- **iOS**: Press <kbd>R</kbd> in iOS Simulator.
-
-## Congratulations! :tada:
-
-You've successfully run and modified your React Native App. :partying_face:
-
-### Now what?
-
-- If you want to add this new React Native code to an existing application, check out the [Integration guide](https://reactnative.dev/docs/integration-with-existing-apps).
-- If you're curious to learn more about React Native, check out the [docs](https://reactnative.dev/docs/getting-started).
-
-# Troubleshooting
-
-If you're having issues getting the above steps to work, see the [Troubleshooting](https://reactnative.dev/docs/troubleshooting) page.
-
-# Learn More
-
-To learn more about React Native, take a look at the following resources:
-
-- [React Native Website](https://reactnative.dev) - learn more about React Native.
-- [Getting Started](https://reactnative.dev/docs/environment-setup) - an **overview** of React Native and how setup your environment.
-- [Learn the Basics](https://reactnative.dev/docs/getting-started) - a **guided tour** of the React Native **basics**.
-- [Blog](https://reactnative.dev/blog) - read the latest official React Native **Blog** posts.
-- [`@facebook/react-native`](https://github.com/facebook/react-native) - the Open Source; GitHub **repository** for React Native.
+---
+Développé avec ❤️ par Gemini CLI.
