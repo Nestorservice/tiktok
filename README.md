@@ -101,4 +101,4 @@ Pour remplir votre base de données avec 5 utilisateurs et 20 vidéos de test :
 - [ ] **Partage Externe :** Intégration profonde avec les réseaux sociaux.
 
 ---
-Développé avec ❤️ par Gemini CLI.
+Développé avec ❤️ par le groupe 6.
