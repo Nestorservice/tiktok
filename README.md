@@ -50,7 +50,7 @@ Clone de TikTok de haute qualité produit avec React Native CLI et un backend Fi
 
 2. **Installer les dépendances :**
    ```bash
-   npm install
+   npm install --legacy-peer-deps
    ```
 
 3. **Configuration Firebase :**
