@@ -8,7 +8,7 @@
     "lint": "eslint .",
     "start": "react-native start",
     "test": "jest",
-    "postinstall": "echo 'postinstall done'"
+    "postinstall": "node scripts/patch-reanimated.js"
   },
   "dependencies": {
     "@gorhom/bottom-sheet": "^5.2.14",
