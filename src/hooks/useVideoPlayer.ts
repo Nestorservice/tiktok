@@ -39,7 +39,7 @@ export function useVideoPlayer() {
     finally { isFetching.current = false; }
   }, [dispatch, hasMore, currentUid]);
 
-  useEffect(() => { loadVideos(true); }, []);
+  useEffect(() => { loadVideos(true); }, [loadVideos]);
 
   const onViewableItemsChanged = useCallback(({ viewableItems }: { viewableItems: Array<{ index: number | null }> }) => {
     if (viewableItems.length > 0 && viewableItems[0].index !== null) {

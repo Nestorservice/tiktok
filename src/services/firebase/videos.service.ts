@@ -36,6 +36,6 @@ export async function incrementVideoViews(videoId: string): Promise<void> {
 export async function searchVideos(query: string): Promise<Video[]> {
   const snap = await firestore().collection(COLLECTIONS.videos)
     .where('isPublic', '==', true).orderBy('description')
-    .startAt(query).endAt(query + '').limit(20).get();
+    .startAt(query).endAt(query + '\uf8ff').limit(20).get();
   return snap.docs.map(d => d.data() as Video);
 }

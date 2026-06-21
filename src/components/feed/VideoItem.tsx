@@ -60,5 +60,5 @@ function VideoItem({ video, isActive, isPausedGlobal }: Props) {
 export default memo(VideoItem);
 const styles = StyleSheet.create({
   container: { width, height, backgroundColor: '#000' },
-  video: { ...StyleSheet.absoluteFillObject },
+  video: { position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 },
 });

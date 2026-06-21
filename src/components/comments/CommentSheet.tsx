@@ -22,17 +22,25 @@ export default function CommentSheet({ videoId }: Props) {
   const [comments, setComments] = useState<Comment[]>([]);
   const [authors, setAuthors] = useState<Record<string, User>>({});
 
+  const authorsRef = useRef<Record<string, User>>({});
+
   useEffect(() => {
     const unsubscribe = subscribeToComments(videoId, async newComments => {
       setComments(newComments);
-      const missing = [...new Set(newComments.filter(c => !authors[c.authorId]).map(c => c.authorId))];
+      const currentAuthors = authorsRef.current;
+      const missing = [...new Set(newComments.filter(c => !currentAuthors[c.authorId]).map(c => c.authorId))];
       if (missing.length > 0) {
         const fetched = await Promise.all(missing.map(uid => getUserById(uid)));
-        setAuthors(prev => { const next = { ...prev }; missing.forEach((uid, i) => { if (fetched[i]) next[uid] = fetched[i]!; }); return next; });
+        setAuthors(prev => {
+          const next = { ...prev };
+          missing.forEach((uid, i) => { if (fetched[i]) next[uid] = fetched[i]!; });
+          authorsRef.current = next;
+          return next;
+        });
       }
     });
     return unsubscribe;
-  }, [videoId, authors]);
+  }, [videoId]);
 
   const handleProfilePress = useCallback((userId: string) => {
     dispatch(clearCommentSheet());

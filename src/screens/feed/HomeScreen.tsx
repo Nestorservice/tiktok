@@ -5,7 +5,7 @@ import { useAppSelector } from '../../store/hooks';
 import { useVideoPlayer } from '../../hooks/useVideoPlayer';
 import VideoItem from '../../components/feed/VideoItem';
 import { VideoWithAuthor } from '../../types';
-import { colors, typography } from '../../theme';
+import { colors, typography, spacing } from '../../theme';
 import CommentSheet from '../../components/comments/CommentSheet';
 
 const { height } = Dimensions.get('window');
